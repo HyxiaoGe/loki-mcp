@@ -1,0 +1,19 @@
+services:
+  loki-mcp:
+    build: .
+    container_name: loki-mcp
+    restart: unless-stopped
+    environment:
+      - LOKI_MCP_LOKI_URL=http://loki:3100
+    ports:
+      - "8060:8060"
+    networks:
+      - default
+      - loki_net
+    mem_limit: 128m
+
+networks:
+  default:
+  loki_net:
+    external: true
+    name: prometheus-stack_default

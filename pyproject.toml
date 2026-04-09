@@ -1,0 +1,12 @@
+[project]
+name = "loki-mcp"
+version = "0.1.0"
+description = "Loki MCP Server - query Docker container logs via AI"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "httpx>=0.28.0",
+    "pydantic-settings>=2.6.0",
+    "fastmcp>=2.0.0",
+]
