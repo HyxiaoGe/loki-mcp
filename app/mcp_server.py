@@ -13,8 +13,7 @@ from app.loki import (
 mcp = FastMCP(
     name="loki",
     instructions=(
-        "Loki log query server. Use these tools to search and analyze "
-        "Docker container logs without SSH access."
+        "Loki log query server. Use these tools to search and analyze Docker container logs without SSH access."
     ),
 )
 
@@ -40,7 +39,7 @@ async def query_logs(
     selector = _build_selector(container, project)
     query = f"{selector}"
     if search:
-        query += f' |= `{search}`'
+        query += f" |= `{search}`"
     start, end = _time_range(minutes)
     data = await _query_range(query, start, end, limit)
     logs = _format_logs(data)
@@ -127,7 +126,7 @@ async def search_logs(
     """
     limit = min(limit, settings.max_limit)
     selector = _build_selector(container, project)
-    query = f'{selector} |= `{keyword}`'
+    query = f"{selector} |= `{keyword}`"
     start, end = _time_range(minutes)
     data = await _query_range(query, start, end, limit)
     logs = _format_logs(data, include_labels=True)

@@ -6,7 +6,20 @@ on:
   workflow_dispatch:
 
 jobs:
+  check:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Ruff lint
+        run: uvx ruff check .
+
+      - name: Ruff format check
+        run: uvx ruff format --check .
+
   deploy:
+    needs: check
     runs-on: self-hosted
     steps:
       - name: Checkout code
