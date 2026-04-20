@@ -10,7 +10,7 @@ services:
     networks:
       - default
       - loki_net
-    mem_limit: 192m
+    mem_limit: 1024m
 
 networks:
   default:
